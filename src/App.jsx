@@ -348,7 +348,22 @@ const App = () => {
                   style={{ transform: `rotate(${wheelRotation}deg)` }}
                 >
                   <svg viewBox="0 0 100 100" className="w-full h-full">
-                    {validChoices.map((choice, i) => {
+                    {validChoices.length === 1 ? (
+                      <g key={0}>
+                        <circle cx="50" cy="50" r="50" fill="#f97316" stroke="white" strokeWidth="0.5" />
+                        <text 
+                          x="50" y="50" 
+                          fill="white" 
+                          fontSize="7" 
+                          fontWeight="900" 
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          className="uppercase tracking-tighter"
+                        >
+                          {validChoices[0].text.substring(0, 12)}
+                        </text>
+                      </g>
+                    ) : validChoices.map((choice, i) => {
                       const sliceAngle = 360 / validChoices.length;
                       const startAngle = i * sliceAngle;
                       const endAngle = (i + 1) * sliceAngle;
